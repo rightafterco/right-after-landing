@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Right After — Before We Begin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Session world — where we're going */
+    --session-bg:     #FDFBF7;
+    --session-teal:   #2A7D7D;
+    --session-teal-d: #1F5E5E;
+    --session-teal-l: rgba(42,125,125,0.1);
+    --session-ink:    #1A1A1A;
+    --session-mid:    #555555;
+    --session-mist:   #999999;
+    --session-rule:   rgba(0,0,0,0.08);
+    --session-pill-bg:#E8E5DF;
+    --session-pill-tx:#6B6860;
+
+    /* Lander world — where we came from */
+    --lander-ink:     #0D0D0F;
+    --lander-cream:   #F5F0E8;
+    --lander-red:     #C0392B;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--session-bg);
+    color: var(--session-ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Subtle warm paper texture */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* ── LANDER HEADER BAR ── */
+  /* The last piece of the lander world — dark bar at top */
+  .lander-bar {
+    background: var(--lander-ink);
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    opacity: 0;
+    animation: appear 0.4s ease forwards 0s;
+  }
+
+  .lander-wordmark {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--lander-cream);
+    letter-spacing: 0.01em;
+    text-decoration: none;
+  }
+
+  /* Progress steps — deliberately styled like the session's pills */
+  .phase-steps {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .phase-pill {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 5px 14px;
+    border-radius: 999px;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .phase-pill.done {
+    background: rgba(245,240,232,0.1);
+    color: rgba(245,240,232,0.4);
+  }
+
+  .phase-pill.active {
+    background: var(--session-teal);
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .phase-pill.upcoming {
+    background: rgba(245,240,232,0.06);
+    color: rgba(245,240,232,0.25);
+  }
+
+  .phase-sep {
+    width: 16px;
+    height: 1px;
+    background: rgba(245,240,232,0.12);
+    flex-shrink: 0;
+  }
+
+  /* ── MAIN CONTENT ── */
+  /* Session world begins here */
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 48px 48px;
+  }
+
+  .primer-card {
+    max-width: 600px;
+    width: 100%;
+  }
+
+  /* ── OPENING SECTION ── */
+  /* One echo of the lander: Playfair Display serif for the key insight */
+  .opening {
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 0.65s ease forwards 0.2s;
+  }
+
+  .opening-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--session-teal);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  /* The ONE Playfair moment — the bridge between the two worlds */
+  .opening-insight {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.2vw, 30px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    color: var(--session-ink);
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--session-rule);
+  }
+
+  /* ── BODY COPY ── */
+  /* DM Sans from here on — we're in the session's world */
+  .primer-body {
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.65s ease forwards 0.36s;
+  }
+
+  .primer-body p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--session-mid);
+    margin-bottom: 16px;
+  }
+
+  .primer-body p:last-child { margin-bottom: 0; }
+
+  .primer-body strong {
+    font-weight: 500;
+    color: var(--session-ink);
+  }
+
+  /* ── PAUSE QUESTIONS ── */
+  .pause-block {
+    padding: 0 0 40px;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--session-rule);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.65s ease forwards 0.52s;
+  }
+
+  .pause-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--session-mist);
+    margin-bottom: 22px;
+    display: block;
+  }
+
+  .pause-q {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .pause-q:last-of-type { margin-bottom: 0; }
+
+  .pause-q-marker {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--session-mist);
+    flex-shrink: 0;
+    margin-top: 1px;
+    width: 16px;
+    text-align: right;
+  }
+
+  .pause-q-text {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--session-ink);
+    line-height: 1.65;
+  }
+
+  .pause-note {
+    margin-top: 20px;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--session-mist);
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  /* ── CTA ── */
+  .primer-cta {
+    opacity: 0;
+    animation: fadeUp 0.65s ease forwards 0.68s;
+  }
+
+  /* Button deliberately matches the session's Send button in teal */
+  .btn-ready {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: var(--session-teal);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 16px 24px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+    margin-bottom: 12px;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-ready:hover:not(:disabled) {
+    background: var(--session-teal-d);
+    transform: translateY(-1px);
+  }
+
+  .btn-ready:disabled {
+    opacity: 0.45;
+    cursor: default;
+    transform: none;
+  }
+
+  .btn-ready-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+
+  .btn-ready-text { font-size: 15px; }
+
+  .btn-ready-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .btn-ready-arrow {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+  }
+
+  .btn-ready:hover:not(:disabled) .btn-ready-arrow {
+    transform: translateX(3px);
+  }
+
+  .cta-sub {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--session-mist);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  /* ── SESSION FOOTER ── */
+  /* Mirrors the session UI's footer tip */
+  .session-footer {
+    border-top: 1px solid var(--session-rule);
+    padding: 14px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    opacity: 0;
+    animation: appear 0.5s ease forwards 0.8s;
+  }
+
+  .footer-left {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--session-mist);
+  }
+
+  /* Preview of the session phase tabs — familiarizes them with the UI before they arrive */
+  .session-preview {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .preview-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--session-mist);
+    margin-right: 8px;
+  }
+
+  .preview-pill {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--session-pill-tx);
+    background: var(--session-pill-bg);
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .preview-pill.first {
+    background: var(--session-teal);
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .preview-ellipsis {
+    font-size: 11px;
+    color: var(--session-mist);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── TIMER BAR ── */
+  /* Fills over 7 seconds — enables the button */
+  .timer-bar-wrap {
+    height: 2px;
+    background: var(--session-rule);
+    overflow: hidden;
+    margin-bottom: 12px;
+    border-radius: 2px;
+  }
+
+  .timer-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--session-teal);
+    transition: width 0.3s ease;
+    border-radius: 2px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes appear {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .lander-bar { padding: 14px 20px; }
+    .phase-pill.done { display: none; }
+    .phase-sep:first-of-type { display: none; }
+    main { padding: 40px 20px 32px; }
+    .session-footer { padding: 12px 20px; flex-direction: column; gap: 10px; align-items: flex-start; }
+    .session-preview { flex-wrap: wrap; }
+    .preview-pill:nth-child(n+5) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LANDER BAR: Last piece of the dark lander world -->
+<!-- The teal pill here is the first introduction of the session's color -->
+<header class="lander-bar">
+  <span class="lander-wordmark">Right After</span>
+  <div class="phase-steps">
+    <div class="phase-pill done">Payment confirmed</div>
+    <div class="phase-sep"></div>
+    <div class="phase-pill active">Before we begin</div>
+    <div class="phase-sep"></div>
+    <div class="phase-pill upcoming">Your session</div>
+  </div>
+</header>
+
+<!-- SESSION WORLD BEGINS -->
+<main>
+  <article class="primer-card">
+
+    <!-- ONE PLAYFAIR MOMENT: Echo of the lander, statement of the core insight -->
+    <div class="opening">
+      <span class="opening-label">Before we begin</span>
+      <p class="opening-insight">
+        "Being skilled at something and wanting to do it every day are not the same thing."
+      </p>
+    </div>
+
+    <!-- DM SANS BODY: We're in the session's world now -->
+    <div class="primer-body">
+      <p>
+        Most career tools ask what you're good at, then recommend jobs that use those skills.
+        This sounds logical. It's the reason so many lawyers end up in roles that look
+        different on paper and feel exactly the same.
+      </p>
+      <p>
+        The session you're about to start treats your skills and your preferred daily work as
+        <strong>two completely separate questions.</strong> It will never recommend a role
+        that sends you back into what you're done with — even if you're excellent at it.
+      </p>
+      <p>
+        Your legal background will get you hired. What fills your days will be built
+        around something else entirely.
+      </p>
+    </div>
+
+    <!-- PAUSE QUESTIONS: Clean, open layout -->
+    <div class="pause-block">
+      <span class="pause-label">Sit with these for 60 seconds before you continue</span>
+      <div class="pause-q">
+        <span class="pause-q-marker">1</span>
+        <span class="pause-q-text">What are you good at that you're done with?</span>
+      </div>
+      <div class="pause-q">
+        <span class="pause-q-marker">2</span>
+        <span class="pause-q-text">What do you actually like doing — even buried inside a job you hate?</span>
+      </div>
+      <p class="pause-note">
+        You don't need to answer out loud. The session will draw it out.
+        Having these in mind will make your answers sharper.
+      </p>
+    </div>
+
+    <!-- CTA: Teal button — same color as the session's Send button -->
+    <div class="primer-cta">
+      <div class="timer-bar-wrap">
+        <div class="timer-bar-fill" id="timerFill"></div>
+      </div>
+      <button class="btn-ready" id="startBtn" disabled onclick="handleStart()">
+        <div class="btn-ready-left">
+          <span class="btn-ready-text">I'm ready to start my session</span>
+          <span class="btn-ready-sub">Your session is waiting</span>
+        </div>
+        <span class="btn-ready-arrow">→</span>
+      </button>
+      <p class="cta-sub">
+        Your conversation is not stored or reviewed. Everything stays in this session.
+      </p>
+    </div>
+
+  </article>
+</main>
+
+<!-- SESSION FOOTER: Preview of the session's phase tabs — no surprises -->
+<footer class="session-footer">
+  <span class="footer-left">Confidential · Not stored</span>
+  <div class="session-preview">
+    <span class="preview-label">Your session covers</span>
+    <span class="preview-pill first">Profile</span>
+    <span class="preview-pill">Fork</span>
+    <span class="preview-pill">Pain Points</span>
+    <span class="preview-pill">Identity</span>
+    <span class="preview-ellipsis">+ more →</span>
+  </div>
+</footer>
+
+<script>
+  // Fill the timer bar over 7 seconds, then enable the button
+  const fill = document.getElementById('timerFill');
+  const btn  = document.getElementById('startBtn');
+  const duration = 7000;
+  const interval = 80;
+  let elapsed = 0;
+
+  const timer = setInterval(() => {
+    elapsed += interval;
+    const pct = Math.min((elapsed / duration) * 100, 100);
+    fill.style.width = pct + '%';
+
+    if (elapsed >= duration) {
+      clearInterval(timer);
+      btn.disabled = false;
+      fill.style.background = '#2A7D7D';
+    }
+  }, interval);
+
+  function handleStart() {
+    btn.querySelector('.btn-ready-text').textContent = 'Starting your session…';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    // In production: window.location.href = '/session';
+    setTimeout(() => {
+      console.log('→ Navigate to session');
+    }, 500);
+  }
+</script>
+</body>
+</html>
