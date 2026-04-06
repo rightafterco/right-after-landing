@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Right After — Career Strategy for Lawyers Who Are Done</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0D0D0F;
+    --ink-mid: #1C1C22;
+    --ink-soft: #2A2A33;
+    --red: #C0392B;
+    --red-dim: #8B2218;
+    --cream: #F5F0E8;
+    --cream-mid: #EDE8DC;
+    --warm-white: #FAF8F4;
+    --mist: #9B9B9B;
+    --mist-light: #C8C8C8;
+    --rule: rgba(255,255,255,0.07);
+    --rule-dark: rgba(0,0,0,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.5;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 22px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(13,13,15,0.98) 0%, transparent 100%);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--red); }
+
+  .nav-right { display: flex; align-items: center; gap: 28px; }
+
+  .nav-link {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--mist);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover { color: var(--cream); }
+
+  .nav-cta {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    padding: 10px 22px;
+    border: 1px solid rgba(245,240,232,0.2);
+    transition: all 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 48px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -120px; right: -80px;
+    width: 560px; height: 560px;
+    background: radial-gradient(circle, rgba(192,57,43,0.07) 0%, transparent 68%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.1s;
+  }
+
+  .hero-eyebrow span {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 6.2vw, 86px);
+    font-weight: 900;
+    line-height: 1.03;
+    letter-spacing: -0.025em;
+    max-width: 840px;
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.22s;
+  }
+
+  .hero-headline em { font-style: italic; color: var(--red); }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--mist-light);
+    max-width: 500px;
+    line-height: 1.75;
+    margin-bottom: 60px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.36s;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.5s;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--red);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 18px 34px;
+    text-decoration: none;
+    transition: all 0.2s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-primary:hover { background: #a93226; transform: translateY(-1px); }
+  .btn-primary .arrow { opacity: 0.65; font-size: 13px; }
+
+  .hero-footnote {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--mist);
+    letter-spacing: 0.06em;
+    line-height: 1.8;
+  }
+
+  .hero-rule {
+    position: absolute;
+    bottom: 0; left: 48px; right: 48px;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .problem { padding: 120px 0; background: var(--ink-mid); }
+
+  .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
+
+  .problem-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 3.8vw, 50px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+
+  .problem-left p { color: var(--mist-light); font-weight: 300; font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+  .problem-left p strong { color: var(--cream); font-weight: 400; }
+
+  .loop-stack { display: flex; flex-direction: column; gap: 2px; }
+
+  .loop-card {
+    padding: 32px 36px;
+    background: var(--ink-soft);
+    border-left: 3px solid transparent;
+  }
+
+  .loop-card.active { border-left-color: var(--red); background: rgba(192,57,43,0.06); }
+
+  .loop-card .year {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--mist);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .loop-card.active .year { color: var(--red); }
+  .loop-card p { font-size: 15px; color: var(--mist-light); font-weight: 300; line-height: 1.65; font-style: italic; }
+  .loop-card.active p { color: var(--cream); }
+
+  .differentiator { padding: 140px 0; background: var(--ink); }
+
+  .diff-statement {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3.2vw, 44px);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    max-width: 760px;
+    margin-bottom: 88px;
+  }
+
+  .diff-statement strong { font-weight: 700; font-style: italic; color: var(--red); }
+
+  .axis-grid { border: 1px solid var(--rule); }
+  .axis-cols { display: grid; grid-template-columns: 1fr 1fr; }
+  .axis-col { padding: 48px 44px; }
+  .axis-col:first-child { border-right: 1px solid var(--rule); }
+
+  .axis-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: inline-block;
+    padding: 5px 12px;
+  }
+
+  .axis-tag.grey { background: rgba(255,255,255,0.04); color: var(--mist); }
+  .axis-tag.red  { background: rgba(192,57,43,0.12); color: var(--red); }
+
+  .axis-col h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; margin-bottom: 14px; line-height: 1.2; }
+  .axis-col p { font-size: 15px; color: var(--mist-light); font-weight: 300; line-height: 1.75; margin-bottom: 28px; }
+
+  .axis-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .axis-chips span { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.05em; padding: 4px 11px; border: 1px solid var(--rule); color: var(--mist); }
+
+  .axis-bottom {
+    border-top: 1px solid var(--rule);
+    padding: 32px 44px;
+    background: rgba(192,57,43,0.04);
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .axis-bottom-arrow { color: var(--red); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .axis-bottom p { font-size: 14px; color: var(--mist-light); font-weight: 300; line-height: 1.7; }
+  .axis-bottom strong { color: var(--cream); font-weight: 400; }
+
+  .how { padding: 130px 0; background: var(--cream); }
+  .how .section-label { color: var(--red); }
+
+  .how-head { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 64px; }
+
+  .how h2 { font-family: 'Playfair Display', serif; font-size: clamp(30px, 3.8vw, 50px); font-weight: 700; color: var(--ink); letter-spacing: -0.02em; line-height: 1.1; }
+  .how-intro { font-size: 15px; color: #666; font-weight: 300; line-height: 1.75; align-self: end; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(0,0,0,0.09); }
+
+  .step { padding: 40px 32px; border-right: 1px solid rgba(0,0,0,0.09); }
+  .step:last-child { border-right: none; }
+
+  .step-num { font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 900; color: rgba(13,13,15,0.18); line-height: 1; margin-bottom: 18px; display: block; }
+  .step h3 { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+  .step p { font-size: 13px; color: #777; font-weight: 300; line-height: 1.7; }
+  .step-time { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-top: 18px; display: block; }
+
+  /* Scroll cue chevrons */
+  .scroll-cue {
+    display: flex;
+    justify-content: center;
+    padding-top: 56px;
+    opacity: 0.35;
+  }
+
+  .scroll-cue svg {
+    width: 24px; height: 24px;
+    animation: bounce 2.2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(6px); }
+  }
+
+  .testimonials { padding: 130px 0; background: var(--ink-mid); }
+  .testi-head { margin-bottom: 60px; }
+  .testi-head h2 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 3.2vw, 42px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; max-width: 520px; }
+
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 60px; }
+
+  .testi-card { 
+    background: var(--ink-soft); 
+    padding: 40px 36px; 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .testi-open-quote { font-family: 'Playfair Display', serif; font-size: 72px; line-height: 0.8; color: var(--red); opacity: 0.25; display: block; margin-bottom: 16px; user-select: none; }
+
+  .testi-card blockquote { font-size: 15px; font-weight: 300; line-height: 1.78; color: var(--cream-mid); margin-bottom: 28px; font-style: italic; }
+
+  .testi-rule { width: 24px; height: 1px; background: var(--red); margin-bottom: 18px; opacity: 0.5; }
+  .testi-name { font-size: 13px; font-weight: 500; color: var(--cream); margin-bottom: 3px; }
+  .testi-role { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.06em; color: var(--mist); }
+
+  .clarity-strip {
+    border: 1px solid rgba(192,57,43,0.18);
+    background: rgba(192,57,43,0.04);
+    padding: 40px 44px;
+    display: grid;
+    grid-template-columns: auto auto auto 1fr;
+    gap: 0 48px;
+    align-items: center;
+  }
+
+  .clarity-stat { text-align: center; }
+  .clarity-num { font-family: 'Playfair Display', serif; font-size: 58px; font-weight: 900; line-height: 1; margin-bottom: 6px; color: var(--mist); }
+  .clarity-denom { font-size: 24px; color: var(--mist); font-weight: 400; }
+  .clarity-num.after { color: var(--cream); }
+  .clarity-num.after .clarity-denom { color: var(--mist); }
+  .clarity-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist); }
+  .clarity-sep { font-size: 32px; color: var(--red); opacity: 0.7; }
+  .clarity-note p { font-size: 14px; color: var(--mist-light); font-weight: 300; line-height: 1.75; }
+  .clarity-note strong { color: var(--cream); font-weight: 400; }
+
+  .pricing { padding: 130px 0; background: var(--ink); }
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
+
+  .pricing-left h2 { font-family: 'Playfair Display', serif; font-size: clamp(30px, 3.8vw, 50px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 28px; }
+  .pricing-left p { font-size: 15px; font-weight: 300; color: var(--mist-light); line-height: 1.8; margin-bottom: 18px; }
+  .pricing-left p strong { color: var(--cream); font-weight: 400; }
+
+  .price-anchors { margin-top: 44px; border-top: 1px solid var(--rule); }
+
+  .anchor-row { display: flex; justify-content: space-between; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--rule); gap: 16px; }
+  .anchor-label { font-size: 13px; color: var(--mist); font-weight: 300; }
+  .anchor-val { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--mist); letter-spacing: 0.04em; flex-shrink: 0; }
+  .anchor-row.hero-price .anchor-label { color: var(--cream); font-weight: 400; }
+  .anchor-row.hero-price .anchor-val { color: var(--red); font-size: 15px; }
+
+  .pricing-card { border: 1px solid rgba(192,57,43,0.25); position: sticky; top: 96px; }
+
+  .pc-top { padding: 44px 40px; border-bottom: 1px solid rgba(192,57,43,0.12); background: linear-gradient(135deg, rgba(192,57,43,0.07) 0%, transparent 55%); }
+
+  .price-amount { font-family: 'Playfair Display', serif; font-size: 68px; font-weight: 900; line-height: 1; margin-bottom: 6px; }
+  .price-amount sup { font-size: 26px; font-weight: 400; vertical-align: super; }
+
+  .price-desc { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mist); margin-bottom: 36px; display: block; }
+
+  .pc-includes { list-style: none; }
+  .pc-includes li { display: flex; align-items: flex-start; gap: 12px; font-size: 13px; font-weight: 300; color: var(--mist-light); line-height: 1.65; margin-bottom: 12px; }
+  .pc-includes li .arrow { color: var(--red); flex-shrink: 0; font-size: 13px; }
+
+  .pc-bot { padding: 32px 40px; }
+
+  .btn-buy { display: block; width: 100%; background: var(--red); color: #fff; font-size: 15px; font-weight: 500; padding: 18px 28px; text-align: center; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; margin-bottom: 18px; letter-spacing: 0.01em; }
+  .btn-buy:hover { background: #a93226; transform: translateY(-1px); }
+
+  .pc-guarantee { font-size: 12px; font-weight: 300; color: var(--mist); text-align: center; line-height: 1.65; }
+  .pc-guarantee strong { color: var(--mist-light); font-weight: 400; }
+
+  .guarantee { padding: 100px 0; background: var(--ink-mid); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+
+  .guarantee-inner { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; }
+
+  .guarantee-symbol { font-family: 'Playfair Display', serif; font-size: 88px; line-height: 0.85; color: var(--red); opacity: 0.45; user-select: none; padding-top: 8px; }
+
+  .guarantee-content h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.01em; }
+  .guarantee-content p { font-size: 15px; font-weight: 300; color: var(--mist-light); line-height: 1.8; max-width: 580px; margin-bottom: 14px; }
+  .guarantee-content p strong { color: var(--cream); font-weight: 400; }
+
+  .guarantee-terms { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--mist); line-height: 1.7; padding-top: 14px; border-top: 1px solid var(--rule); max-width: 560px; }
+
+  .final-cta { padding: 160px 0; background: var(--ink); text-align: center; position: relative; overflow: hidden; }
+
+  .final-cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(192,57,43,0.055) 0%, transparent 65%); pointer-events: none; }
+
+  .final-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 66px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.06; margin-bottom: 28px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .final-cta h2 em { font-style: italic; color: var(--red); }
+  .final-cta p { font-size: 17px; font-weight: 300; color: var(--mist-light); margin-bottom: 48px; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.75; }
+
+  footer { padding: 44px 48px; border-top: 1px solid var(--rule); display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--cream); margin-bottom: 8px; display: block; }
+  .footer-logo span { color: var(--red); }
+  .footer-tagline { font-size: 12px; font-weight: 300; color: var(--mist); }
+  .footer-disclaimer { font-size: 11px; color: var(--mist); font-weight: 300; line-height: 1.7; max-width: 520px; text-align: right; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-link { display: none; }
+    .hero { padding: 110px 24px 80px; }
+    .container { padding: 0 24px; }
+    .problem-grid { grid-template-columns: 1fr; gap: 48px; }
+    .how-head { grid-template-columns: 1fr; gap: 20px; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .step:nth-child(2) { border-right: none; }
+    .step:nth-child(3) { border-top: 1px solid rgba(0,0,0,0.09); }
+    .testi-grid { grid-template-columns: 1fr; }
+    .clarity-strip { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+    .clarity-note { grid-column: 1 / -1; }
+    .pricing-grid { grid-template-columns: 1fr; gap: 48px; }
+    .pricing-card { position: static; }
+    .axis-cols { grid-template-columns: 1fr; }
+    .axis-col:first-child { border-right: none; border-bottom: 1px solid var(--rule); }
+    .guarantee-inner { grid-template-columns: 1fr; gap: 20px; }
+    .guarantee-symbol { font-size: 60px; }
+    footer { flex-direction: column; }
+    .footer-disclaimer { text-align: left; }
+  }
+
+  @media (max-width: 600px) {
+    .steps { grid-template-columns: 1fr; }
+    .step { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.09); }
+    .hero-headline { font-size: 38px; }
+    .clarity-strip { grid-template-columns: 1fr; }
+    .clarity-sep { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Right<span>.</span>After</a>
+  <div class="nav-right">
+    <a href="#how" class="nav-link">How it works</a>
+    <a href="#pricing" class="nav-cta">Start my session — $297</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span>For lawyers who know they're done</span>
+  </div>
+  <h1 class="hero-headline serif">
+    You've known you need to leave<br>
+    for <em>two years.</em><br>
+    In one session, you'll know where to go.
+  </h1>
+  <p class="hero-sub">
+    A confidential AI career strategy session that gives you a specific role, a salary range, and a 60-day plan. Not a list of things to consider — a specific answer.
+  </p>
+  <div class="hero-actions">
+    <a href="#pricing" class="btn-primary">
+      Start my session
+      <span class="arrow">→</span>
+    </a>
+    <div class="hero-footnote">
+      $297 · One session · One specific answer<br>
+      If it doesn't land, we run it again. Free.
+    </div>
+  </div>
+  <div class="hero-rule"></div>
+  <div class="scroll-cue" style="position:absolute; bottom:32px; left:0; right:0; padding-top:0;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mist)"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div class="problem-left reveal">
+        <span class="section-label">The problem</span>
+        <h2 class="serif">The loop you've been running for years.</h2>
+        <p>You're not stuck because you're incapable. You're stuck because this problem doesn't work like legal problems do. There's no case law for this. No briefing schedule. No precedent to follow.</p>
+        <p>Most career tools make it worse. They ask what you're good at, then recommend roles that use those skills — sending you right back into work that looks different on paper and feels exactly the same on Monday morning.</p>
+        <p>This tool doesn't do that. It treats what you're skilled at and what you want to do every day as two completely separate questions — because they are.</p>
+      </div>
+      <div class="problem-right reveal reveal-delay-1">
+        <div class="loop-stack">
+          <div class="loop-card">
+            <span class="year">Year one</span>
+            <p>"I need to get out. I'll start thinking about options."</p>
+          </div>
+          <div class="loop-card">
+            <span class="year">Year two</span>
+            <p>"I've been thinking about it. I just need to do more research before I can decide anything."</p>
+          </div>
+          <div class="loop-card active">
+            <span class="year">Right now</span>
+            <p>"I'm still here. I still don't know what to do. And I'm not sure how many more of these years I have left in me."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mist)"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<section class="differentiator">
+  <div class="container">
+    <p class="diff-statement serif reveal">
+      Most tools look at your résumé and send you right back into what you hate — just with a <strong>different title.</strong> This one doesn't.
+    </p>
+    <div class="axis-grid reveal">
+      <div class="axis-cols">
+        <div class="axis-col">
+          <span class="axis-tag grey">Your entry ticket</span>
+          <h3 class="serif">What makes a hiring manager take you seriously</h3>
+          <p>Skills you built over years of practice. You don't have to love them. You just have to have them. They're the reason a non-law employer looks at your résumé and says <em>this person can handle the job.</em></p>
+          <div class="axis-chips">
+            <span>Negotiation</span><span>Risk assessment</span><span>Regulatory knowledge</span><span>Persuasive writing</span><span>Oral advocacy</span><span>Stakeholder management</span>
+          </div>
+        </div>
+        <div class="axis-col">
+          <span class="axis-tag red">What fills your days</span>
+          <h3 class="serif">What you actually want to do for eight hours</h3>
+          <p>The tasks you don't mind — even buried inside a job you hate. The moments when you look up and time has passed. These are the activities your next role should be <em>built around.</em></p>
+          <div class="axis-chips">
+            <span>Mentoring people</span><span>Building systems</span><span>Writing</span><span>Public speaking</span><span>Teaching</span><span>Solving complex problems</span>
+          </div>
+        </div>
+      </div>
+      <div class="axis-bottom">
+        <span class="axis-bottom-arrow">∩</span>
+        <p>The recommendation lives at the intersection. A skilled negotiator who loves mentoring becomes an <strong>HR Business Partner</strong> — not a Contracts Manager. Same credential. Completely different days. Your legal background stays on your résumé. Your daily work changes entirely.</p>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mist)"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="container">
+    <div class="how-head reveal">
+      <div>
+        <span class="section-label">How it works</span>
+        <h2 class="serif">One hour.<br>One specific answer.<br>No homework.</h2>
+      </div>
+      <p class="how-intro">You answer questions honestly. The AI does all the analysis — identifies your skills, separates what you want to keep using from what you're done with, and builds a plan around that. You don't generate options. You don't figure anything out. That's the whole point.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <span class="step-num serif">01</span>
+        <h3>Read the primer</h3>
+        <p>A 90-second read before the session starts. Frames the two key questions so your answers are sharper from the first message.</p>
+        <span class="step-time">2 min</span>
+      </div>
+      <div class="step">
+        <span class="step-num serif">02</span>
+        <h3>Answer direct questions</h3>
+        <p>One question at a time. No lists to generate, nothing to figure out. Honest answers are the only requirement.</p>
+        <span class="step-time">40–50 min</span>
+      </div>
+      <div class="step">
+        <span class="step-num serif">03</span>
+        <h3>Receive your report</h3>
+        <p>A specific job title, salary range, company type, and a 60-day action plan — including what to do in the next 48 hours.</p>
+        <span class="step-time">Immediate</span>
+      </div>
+      <div class="step">
+        <span class="step-num serif">04</span>
+        <h3>Amend if needed</h3>
+        <p>Remember something afterward? One amendment is included. Add it and your report updates. No second session required.</p>
+        <span class="step-time">Optional</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue" style="padding-bottom: 20px;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:rgba(13,13,15,0.2)"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <div class="testi-head reveal">
+      <span class="section-label">From the beta</span>
+      <h2 class="serif">What lawyers said after their sessions.</h2>
+    </div>
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <span class="testi-open-quote">"</span>
+        <div class="testi-body">
+          <blockquote>I've had two career coaches and read every book on this. This is the first time anything — or anyone — separated what I'm good at from what I actually want to do. Those are not the same list. I'd never seen that before.</blockquote>
+        </div>
+        <div class="testi-footer">
+          <div class="testi-rule"></div>
+          <div class="testi-name">Corporate litigator</div>
+          <div class="testi-role">14 years · BigLaw</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="testi-open-quote">"</span>
+        <div class="testi-body">
+          <blockquote>I knew I wanted to leave for the past five years, but the gap between my current and ideal future seemed so vast that I just remained stuck. I feel so much better now that I have a real plan.</blockquote>
+        </div>
+        <div class="testi-footer">
+          <div class="testi-rule"></div>
+          <div class="testi-name">Contracts attorney</div>
+          <div class="testi-role">20 years · Local government</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="testi-open-quote">"</span>
+        <div class="testi-body">
+          <blockquote>The part that got me was when it said which skills to leave behind. Nobody has ever told me I don't have to keep doing the part I hate — that it can stay on my résumé for credibility without defining my days. That reframe alone was worth it.</blockquote>
+        </div>
+        <div class="testi-footer">
+          <div class="testi-rule"></div>
+          <div class="testi-name">In-house counsel</div>
+          <div class="testi-role">16 years · Tech sector</div>
+        </div>
+      </div>
+    </div>
+    <div class="clarity-strip reveal">
+      <div class="clarity-stat">
+        <div class="clarity-num serif">3<span class="clarity-denom">/10</span></div>
+        <div class="clarity-label">Before session</div>
+      </div>
+      <div class="clarity-sep">→</div>
+      <div class="clarity-stat">
+        <div class="clarity-num after serif">8<span class="clarity-denom" style="color:var(--mist)">/10</span></div>
+        <div class="clarity-label">After session</div>
+      </div>
+      <div class="clarity-note">
+        <p>The average lawyer goes from a <strong>3 to an 8 on career clarity</strong> in one session. This isn't a promise about whether you'll take action. It's a promise about whether you'll <strong>know what to do.</strong> That part we can deliver every time.</p>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mist)"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-grid">
+      <div class="pricing-left reveal">
+        <span class="section-label">Investment</span>
+        <h2 class="serif">Priced like the decision it is.</h2>
+        <p>Whatever you earn, you've been spending real time on this problem for years — circling the same thoughts, arriving at the same impasse. <strong>That loop is expensive at any salary.</strong> $297 ends it.</p>
+        <p>You don't need to be billing $400 an hour for this to be worth it. You need to be tired enough of the loop that you're ready to stop running it. If you're reading this page, you probably are.</p>
+        <div class="price-anchors">
+          <div class="anchor-row">
+            <span class="anchor-label">Career coach (3 months)</span>
+            <span class="anchor-val">$5,000–$15,000</span>
+          </div>
+          <div class="anchor-row">
+            <span class="anchor-label">Executive recruiter fee</span>
+            <span class="anchor-val">15–25% of salary</span>
+          </div>
+          <div class="anchor-row">
+            <span class="anchor-label">Two more years in the loop</span>
+            <span class="anchor-val">You know what it costs</span>
+          </div>
+          <div class="anchor-row hero-price">
+            <span class="anchor-label">Right After — one session, one answer</span>
+            <span class="anchor-val">$297</span>
+          </div>
+        </div>
+      </div>
+      <div class="pricing-card reveal reveal-delay-1">
+        <div class="pc-top">
+          <div class="price-amount serif"><sup>$</sup>297</div>
+          <span class="price-desc">One session · Complete</span>
+          <ul class="pc-includes">
+            <li><span class="arrow">→</span> Confidential AI strategy session (~50 minutes)</li>
+            <li><span class="arrow">→</span> Personalized exit report with specific job title, salary range, and company type</li>
+            <li><span class="arrow">→</span> Bridge role and dream path — two recommendations, not one</li>
+            <li><span class="arrow">→</span> 60-day action plan with exact steps, outreach scripts, and search terms</li>
+            <li><span class="arrow">→</span> One report amendment included — in case you remember something afterward</li>
+          </ul>
+        </div>
+        <div class="pc-bot">
+          <a href="#" class="btn-buy">Start my session →</a>
+          <p class="pc-guarantee">
+            <strong>If it doesn't land, we run it again. Free.</strong><br>
+            No forms, no justification. Just tell us.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mist)"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<section class="guarantee">
+  <div class="container">
+    <div class="guarantee-inner reveal">
+      <div class="guarantee-symbol serif">&sect;</div>
+      <div class="guarantee-content">
+        <h3 class="serif">The Second Session Guarantee</h3>
+        <p>If you complete your session and don't feel clearer about your next move than when you started, <strong>we'll run it again — free.</strong> One time. No refund form, no explanation required. Just tell us it didn't land.</p>
+        <p>We offer a second session instead of a refund because we're confident the process works — and because a second conversation almost always surfaces what the first one missed. The people who use this guarantee rarely need a third.</p>
+        <div class="guarantee-terms">
+          We don't store your session. We take your word for it. Your conversation stays between you and the AI — always.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <h2 class="serif reveal">Stop thinking about it.<br><em>Start planning it.</em></h2>
+    <p class="reveal">Most lawyers who are unhappy stay that way — not because they can't change, but because they never get a specific answer. This is yours.</p>
+    <a href="#pricing" class="btn-primary reveal">Start my session — $297 <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">
+    <span class="footer-logo">Right<span>.</span>After</span>
+    <span class="footer-tagline">Career strategy for lawyers who are done.</span>
+  </div>
+  <p class="footer-disclaimer">
+    Right After is an AI career strategy tool — not a licensed counselor, attorney, or placement service. Recommendations are a strong starting point based on patterns in legal career transitions, not a guarantee of employment or outcome. All sessions are confidential within this platform.
+  </p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
