@@ -94,11 +94,11 @@
   .nav-cta:hover { background: var(--cream); color: var(--ink); border-color: var(--cream); }
 
   .hero {
-    min-height: 100vh;
+    min-height: 90vh; /* Reduced from 100vh */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 140px 48px 100px;
+    padding: 120px 48px 80px;
     position: relative;
     overflow: hidden;
   }
@@ -115,7 +115,7 @@
   .hero-eyebrow {
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     opacity: 0;
     animation: fadeUp 0.7s ease forwards 0.1s;
   }
@@ -135,7 +135,7 @@
     line-height: 1.03;
     letter-spacing: -0.025em;
     max-width: 840px;
-    margin-bottom: 44px;
+    margin-bottom: 40px;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.22s;
   }
@@ -148,7 +148,7 @@
     color: var(--mist-light);
     max-width: 500px;
     line-height: 1.75;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.36s;
   }
@@ -207,7 +207,8 @@
     display: block;
   }
 
-  .problem { padding: 120px 0; background: var(--ink-mid); }
+  /* SPACING REDUCTION */
+  .problem { padding: 80px 0; background: var(--ink-mid); }
 
   .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
 
@@ -247,7 +248,7 @@
   .loop-card p { font-size: 15px; color: var(--mist-light); font-weight: 300; line-height: 1.65; font-style: italic; }
   .loop-card.active p { color: var(--cream); }
 
-  .differentiator { padding: 140px 0; background: var(--ink); }
+  .differentiator { padding: 80px 0; background: var(--ink); }
 
   .diff-statement {
     font-family: 'Playfair Display', serif;
@@ -256,7 +257,7 @@
     line-height: 1.35;
     letter-spacing: -0.01em;
     max-width: 760px;
-    margin-bottom: 88px;
+    margin-bottom: 60px; /* Reduced from 88px */
   }
 
   .diff-statement strong { font-weight: 700; font-style: italic; color: var(--red); }
@@ -294,11 +295,11 @@
     gap: 18px;
   }
 
-  .axis-bottom-arrow { color: var(--red); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .axis-bottom-arrow { color: var(--red); font-size: 22px; flex-shrink: 0; margin-top: -2px; font-weight: 300; }
   .axis-bottom p { font-size: 14px; color: var(--mist-light); font-weight: 300; line-height: 1.7; }
   .axis-bottom strong { color: var(--cream); font-weight: 400; }
 
-  .how { padding: 130px 0; background: var(--cream); }
+  .how { padding: 80px 0; background: var(--cream); }
   .how .section-label { color: var(--red); }
 
   .how-head { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 64px; }
@@ -316,25 +317,7 @@
   .step p { font-size: 13px; color: #777; font-weight: 300; line-height: 1.7; }
   .step-time { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-top: 18px; display: block; }
 
-  /* Scroll cue chevrons */
-  .scroll-cue {
-    display: flex;
-    justify-content: center;
-    padding-top: 56px;
-    opacity: 0.35;
-  }
-
-  .scroll-cue svg {
-    width: 24px; height: 24px;
-    animation: bounce 2.2s ease-in-out infinite;
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50%       { transform: translateY(6px); }
-  }
-
-  .testimonials { padding: 130px 0; background: var(--ink-mid); }
+  .testimonials { padding: 80px 0; background: var(--ink-mid); }
   .testi-head { margin-bottom: 60px; }
   .testi-head h2 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 3.2vw, 42px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; max-width: 520px; }
 
@@ -377,7 +360,7 @@
   .clarity-note p { font-size: 14px; color: var(--mist-light); font-weight: 300; line-height: 1.75; }
   .clarity-note strong { color: var(--cream); font-weight: 400; }
 
-  .pricing { padding: 130px 0; background: var(--ink); }
+  .pricing { padding: 80px 0; background: var(--ink); }
   .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
 
   .pricing-left h2 { font-family: 'Playfair Display', serif; font-size: clamp(30px, 3.8vw, 50px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 28px; }
@@ -413,7 +396,7 @@
   .pc-guarantee { font-size: 12px; font-weight: 300; color: var(--mist); text-align: center; line-height: 1.65; }
   .pc-guarantee strong { color: var(--mist-light); font-weight: 400; }
 
-  .guarantee { padding: 100px 0; background: var(--ink-mid); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .guarantee { padding: 60px 0; background: var(--ink-mid); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 
   .guarantee-inner { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; }
 
@@ -425,7 +408,7 @@
 
   .guarantee-terms { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--mist); line-height: 1.7; padding-top: 14px; border-top: 1px solid var(--rule); max-width: 560px; }
 
-  .final-cta { padding: 160px 0; background: var(--ink); text-align: center; position: relative; overflow: hidden; }
+  .final-cta { padding: 100px 0; background: var(--ink); text-align: center; position: relative; overflow: hidden; }
 
   .final-cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(192,57,43,0.055) 0%, transparent 65%); pointer-events: none; }
 
@@ -475,7 +458,6 @@
     .step { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.09); }
     .hero-headline { font-size: 38px; }
     .clarity-strip { grid-template-columns: 1fr; }
-    .clarity-sep { display: none; }
   }
 </style>
 </head>
@@ -485,7 +467,7 @@
   <a href="#" class="nav-logo">Right<span>.</span>After</a>
   <div class="nav-right">
     <a href="#how" class="nav-link">How it works</a>
-<a href="https://buy.stripe.com/test_9B67sM5yAble0A44v63oA00" class="nav-cta">Start my session — $297</a> 
+    <a href="https://buy.stripe.com/test_9B67sM5yAble0A44v63oA00" class="nav-cta">Start my session — $297</a> 
   </div>
 </nav>
 
@@ -502,19 +484,16 @@
     A confidential AI career strategy session that gives you a specific role, a salary range, and a 60-day plan. Not a list of things to consider — a specific answer.
   </p>
   <div class="hero-actions">
-<a href="https://buy.stripe.com/test_9B67sM5yAble0A44v63oA00" class="btn-primary">   
- Start my session
+    <a href="https://buy.stripe.com/test_9B67sM5yAble0A44v63oA00" class="btn-primary">   
+      Start my session
       <span class="arrow">→</span>
     </a>
     <div class="hero-footnote">
       $297 · One session · One specific answer<br>
-      If it doesn't land, we run it again. Free.
+      If your path still feels unclear, we run it again. Free.
     </div>
   </div>
   <div class="hero-rule"></div>
-  <div class="scroll-cue" style="position:absolute; bottom:32px; left:0; right:0; padding-top:0;">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mist)"><polyline points="6 9 12 15 18 9"/></svg>
-  </div>
 </section>
 
 <section class="problem">
@@ -545,9 +524,6 @@
       </div>
     </div>
   </div>
-  <div class="scroll-cue">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mist)"><polyline points="6 9 12 15 18 9"/></svg>
-  </div>
 </section>
 
 <section class="differentiator">
@@ -575,13 +551,10 @@
         </div>
       </div>
       <div class="axis-bottom">
-        <span class="axis-bottom-arrow">∩</span>
+        <span class="axis-bottom-arrow">+</span>
         <p>The recommendation lives at the intersection. A skilled negotiator who loves mentoring becomes an <strong>HR Business Partner</strong> — not a Contracts Manager. Same credential. Completely different days. Your legal background stays on your résumé. Your daily work changes entirely.</p>
       </div>
     </div>
-  </div>
-  <div class="scroll-cue">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mist)"><polyline points="6 9 12 15 18 9"/></svg>
   </div>
 </section>
 
@@ -620,9 +593,6 @@
         <span class="step-time">Optional</span>
       </div>
     </div>
-  </div>
-  <div class="scroll-cue" style="padding-bottom: 20px;">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:rgba(13,13,15,0.2)"><polyline points="6 9 12 15 18 9"/></svg>
   </div>
 </section>
 
@@ -682,9 +652,6 @@
       </div>
     </div>
   </div>
-  <div class="scroll-cue">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mist)"><polyline points="6 9 12 15 18 9"/></svg>
-  </div>
 </section>
 
 <section class="pricing" id="pricing">
@@ -729,15 +696,12 @@
         <div class="pc-bot">
           <a href="https://buy.stripe.com/test_9B67sM5yAble0A44v63oA00" class="btn-buy">Start my session →</a>
           <p class="pc-guarantee">
-            <strong>If it doesn't land, we run it again. Free.</strong><br>
+            <strong>If you don't feel clear, we'll run it again. Free.</strong><br>
             No forms, no justification. Just tell us.
           </p>
         </div>
       </div>
     </div>
-  </div>
-  <div class="scroll-cue">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--mist)"><polyline points="6 9 12 15 18 9"/></svg>
   </div>
 </section>
 
