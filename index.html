@@ -49,7 +49,7 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 22px 48px;
+    padding: 18px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -94,11 +94,11 @@
   .nav-cta:hover { background: var(--cream); color: var(--ink); border-color: var(--cream); }
 
   .hero {
-    min-height: 90vh; /* Reduced from 100vh */
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 120px 48px 80px;
+    padding: 100px 48px 60px;
     position: relative;
     overflow: hidden;
   }
@@ -115,7 +115,7 @@
   .hero-eyebrow {
     display: flex;
     align-items: center;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     opacity: 0;
     animation: fadeUp 0.7s ease forwards 0.1s;
   }
@@ -130,12 +130,12 @@
 
   .hero-headline {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(44px, 6.2vw, 86px);
+    font-size: clamp(40px, 6vw, 82px);
     font-weight: 900;
-    line-height: 1.03;
+    line-height: 1.05;
     letter-spacing: -0.025em;
     max-width: 840px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.22s;
   }
@@ -148,7 +148,7 @@
     color: var(--mist-light);
     max-width: 500px;
     line-height: 1.75;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.36s;
   }
@@ -199,16 +199,22 @@
 
   .section-label {
     font-family: 'DM Mono', monospace;
-    font-size: 13px;
+    font-size: 12px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--red);
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     display: block;
   }
 
-  /* SPACING REDUCTION */
-  .problem { padding: 80px 0; background: var(--ink-mid); }
+  /* GLOBAL PADDING REDUCTION (-20px) */
+  .problem { padding: 60px 0; background: var(--ink-mid); }
+  .differentiator { padding: 60px 0; background: var(--ink); }
+  .how { padding: 60px 0; background: var(--cream); }
+  .testimonials { padding: 60px 0; background: var(--ink-mid); }
+  .pricing { padding: 60px 0; background: var(--ink); }
+  .guarantee { padding: 40px 0; background: var(--ink-mid); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .final-cta { padding: 80px 0; background: var(--ink); text-align: center; position: relative; overflow: hidden; }
 
   .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
 
@@ -218,11 +224,10 @@
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -0.02em;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
   }
 
-  .problem-left p { color: var(--mist-light); font-weight: 300; font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
-  .problem-left p strong { color: var(--cream); font-weight: 400; }
+  .problem-left p { color: var(--mist-light); font-weight: 300; font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
 
   .loop-stack { display: flex; flex-direction: column; gap: 2px; }
 
@@ -248,16 +253,14 @@
   .loop-card p { font-size: 15px; color: var(--mist-light); font-weight: 300; line-height: 1.65; font-style: italic; }
   .loop-card.active p { color: var(--cream); }
 
-  .differentiator { padding: 80px 0; background: var(--ink); }
-
   .diff-statement {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(26px, 3.2vw, 44px);
+    font-size: clamp(26px, 3.2vw, 42px);
     font-weight: 400;
     line-height: 1.35;
     letter-spacing: -0.01em;
     max-width: 760px;
-    margin-bottom: 60px; /* Reduced from 88px */
+    margin-bottom: 40px;
   }
 
   .diff-statement strong { font-weight: 700; font-style: italic; color: var(--red); }
@@ -297,45 +300,26 @@
 
   .axis-bottom-arrow { color: var(--red); font-size: 22px; flex-shrink: 0; margin-top: -2px; font-weight: 300; }
   .axis-bottom p { font-size: 14px; color: var(--mist-light); font-weight: 300; line-height: 1.7; }
-  .axis-bottom strong { color: var(--cream); font-weight: 400; }
 
-  .how { padding: 80px 0; background: var(--cream); }
-  .how .section-label { color: var(--red); }
-
-  .how-head { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 64px; }
+  .how-head { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 40px; }
 
   .how h2 { font-family: 'Playfair Display', serif; font-size: clamp(30px, 3.8vw, 50px); font-weight: 700; color: var(--ink); letter-spacing: -0.02em; line-height: 1.1; }
   .how-intro { font-size: 15px; color: #666; font-weight: 300; line-height: 1.75; align-self: end; }
 
   .steps { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(0,0,0,0.09); }
-
   .step { padding: 40px 32px; border-right: 1px solid rgba(0,0,0,0.09); }
   .step:last-child { border-right: none; }
-
   .step-num { font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 900; color: rgba(13,13,15,0.18); line-height: 1; margin-bottom: 18px; display: block; }
   .step h3 { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
   .step p { font-size: 13px; color: #777; font-weight: 300; line-height: 1.7; }
   .step-time { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin-top: 18px; display: block; }
 
-  .testimonials { padding: 80px 0; background: var(--ink-mid); }
-  .testi-head { margin-bottom: 60px; }
+  .testi-head { margin-bottom: 40px; }
   .testi-head h2 { font-family: 'Playfair Display', serif; font-size: clamp(26px, 3.2vw, 42px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; max-width: 520px; }
-
-  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 60px; }
-
-  .testi-card { 
-    background: var(--ink-soft); 
-    padding: 40px 36px; 
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 40px; }
+  .testi-card { background: var(--ink-soft); padding: 40px 36px; display: flex; flex-direction: column; justify-content: space-between; }
   .testi-open-quote { font-family: 'Playfair Display', serif; font-size: 72px; line-height: 0.8; color: var(--red); opacity: 0.25; display: block; margin-bottom: 16px; user-select: none; }
-
   .testi-card blockquote { font-size: 15px; font-weight: 300; line-height: 1.78; color: var(--cream-mid); margin-bottom: 28px; font-style: italic; }
-
   .testi-rule { width: 24px; height: 1px; background: var(--red); margin-bottom: 18px; opacity: 0.5; }
   .testi-name { font-size: 13px; font-weight: 500; color: var(--cream); margin-bottom: 3px; }
   .testi-role { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.06em; color: var(--mist); }
@@ -343,112 +327,82 @@
   .clarity-strip {
     border: 1px solid rgba(192,57,43,0.18);
     background: rgba(192,57,43,0.04);
-    padding: 40px 44px;
+    padding: 32px 44px;
     display: grid;
     grid-template-columns: auto auto auto 1fr;
     gap: 0 48px;
     align-items: center;
   }
 
-  .clarity-stat { text-align: center; }
   .clarity-num { font-family: 'Playfair Display', serif; font-size: 58px; font-weight: 900; line-height: 1; margin-bottom: 6px; color: var(--mist); }
-  .clarity-denom { font-size: 24px; color: var(--mist); font-weight: 400; }
   .clarity-num.after { color: var(--cream); }
-  .clarity-num.after .clarity-denom { color: var(--mist); }
   .clarity-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mist); }
   .clarity-sep { font-size: 32px; color: var(--red); opacity: 0.7; }
   .clarity-note p { font-size: 14px; color: var(--mist-light); font-weight: 300; line-height: 1.75; }
-  .clarity-note strong { color: var(--cream); font-weight: 400; }
 
-  .pricing { padding: 80px 0; background: var(--ink); }
   .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
-
-  .pricing-left h2 { font-family: 'Playfair Display', serif; font-size: clamp(30px, 3.8vw, 50px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 28px; }
-  .pricing-left p { font-size: 15px; font-weight: 300; color: var(--mist-light); line-height: 1.8; margin-bottom: 18px; }
-  .pricing-left p strong { color: var(--cream); font-weight: 400; }
-
-  .price-anchors { margin-top: 44px; border-top: 1px solid var(--rule); }
-
-  .anchor-row { display: flex; justify-content: space-between; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--rule); gap: 16px; }
+  .pricing-left h2 { font-family: 'Playfair Display', serif; font-size: clamp(30px, 3.8vw, 50px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 24px; }
+  .pricing-left p { font-size: 15px; font-weight: 300; color: var(--mist-light); line-height: 1.8; margin-bottom: 16px; }
+  .price-anchors { margin-top: 32px; border-top: 1px solid var(--rule); }
+  .anchor-row { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--rule); gap: 16px; }
   .anchor-label { font-size: 13px; color: var(--mist); font-weight: 300; }
-  .anchor-val { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--mist); letter-spacing: 0.04em; flex-shrink: 0; }
+  .anchor-val { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--mist); }
   .anchor-row.hero-price .anchor-label { color: var(--cream); font-weight: 400; }
   .anchor-row.hero-price .anchor-val { color: var(--red); font-size: 15px; }
 
-  .pricing-card { border: 1px solid rgba(192,57,43,0.25); position: sticky; top: 96px; }
-
-  .pc-top { padding: 44px 40px; border-bottom: 1px solid rgba(192,57,43,0.12); background: linear-gradient(135deg, rgba(192,57,43,0.07) 0%, transparent 55%); }
-
+  .pricing-card { border: 1px solid rgba(192,57,43,0.25); position: sticky; top: 80px; }
+  .pc-top { padding: 40px; border-bottom: 1px solid rgba(192,57,43,0.12); background: linear-gradient(135deg, rgba(192,57,43,0.07) 0%, transparent 55%); }
   .price-amount { font-family: 'Playfair Display', serif; font-size: 68px; font-weight: 900; line-height: 1; margin-bottom: 6px; }
   .price-amount sup { font-size: 26px; font-weight: 400; vertical-align: super; }
-
-  .price-desc { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mist); margin-bottom: 36px; display: block; }
-
+  .price-desc { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mist); margin-bottom: 32px; display: block; }
   .pc-includes { list-style: none; }
   .pc-includes li { display: flex; align-items: flex-start; gap: 12px; font-size: 13px; font-weight: 300; color: var(--mist-light); line-height: 1.65; margin-bottom: 12px; }
   .pc-includes li .arrow { color: var(--red); flex-shrink: 0; font-size: 13px; }
-
   .pc-bot { padding: 32px 40px; }
-
-  .btn-buy { display: block; width: 100%; background: var(--red); color: #fff; font-size: 15px; font-weight: 500; padding: 18px 28px; text-align: center; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; margin-bottom: 18px; letter-spacing: 0.01em; }
-  .btn-buy:hover { background: #a93226; transform: translateY(-1px); }
-
+  .btn-buy { display: block; width: 100%; background: var(--red); color: #fff; font-size: 15px; font-weight: 500; padding: 18px 28px; text-align: center; text-decoration: none; border: none; cursor: pointer; margin-bottom: 18px; letter-spacing: 0.01em; }
   .pc-guarantee { font-size: 12px; font-weight: 300; color: var(--mist); text-align: center; line-height: 1.65; }
-  .pc-guarantee strong { color: var(--mist-light); font-weight: 400; }
 
-  .guarantee { padding: 60px 0; background: var(--ink-mid); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  /* UPDATED GUARANTEE SECTION FOR LEFT-ALIGNED SYMBOL */
+  .guarantee-inner { display: flex; gap: 40px; align-items: flex-start; }
+  .guarantee-symbol { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 96px; 
+    line-height: 0.7; 
+    color: var(--red); 
+    opacity: 0.5; 
+    user-select: none;
+    padding-top: 5px;
+    flex-shrink: 0;
+  }
+  .guarantee-content { flex-grow: 1; }
+  .guarantee-content h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.01em; }
+  .guarantee-content p { font-size: 15px; font-weight: 300; color: var(--mist-light); line-height: 1.75; max-width: 600px; margin-bottom: 14px; }
+  .guarantee-terms { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--mist); line-height: 1.7; padding-top: 14px; border-top: 1px solid var(--rule); max-width: 600px; }
 
-  .guarantee-inner { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; }
+  .final-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 62px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.06; margin-bottom: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .final-cta p { font-size: 17px; font-weight: 300; color: var(--mist-light); margin-bottom: 40px; max-width: 400px; margin-left: auto; margin-right: auto; }
 
-  .guarantee-symbol { font-family: 'Playfair Display', serif; font-size: 88px; line-height: 0.85; color: var(--red); opacity: 0.45; user-select: none; padding-top: 8px; }
-
-  .guarantee-content h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.01em; }
-  .guarantee-content p { font-size: 15px; font-weight: 300; color: var(--mist-light); line-height: 1.8; max-width: 580px; margin-bottom: 14px; }
-  .guarantee-content p strong { color: var(--cream); font-weight: 400; }
-
-  .guarantee-terms { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--mist); line-height: 1.7; padding-top: 14px; border-top: 1px solid var(--rule); max-width: 560px; }
-
-  .final-cta { padding: 100px 0; background: var(--ink); text-align: center; position: relative; overflow: hidden; }
-
-  .final-cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(192,57,43,0.055) 0%, transparent 65%); pointer-events: none; }
-
-  .final-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 66px); font-weight: 900; letter-spacing: -0.03em; line-height: 1.06; margin-bottom: 28px; max-width: 640px; margin-left: auto; margin-right: auto; }
-  .final-cta h2 em { font-style: italic; color: var(--red); }
-  .final-cta p { font-size: 17px; font-weight: 300; color: var(--mist-light); margin-bottom: 48px; max-width: 400px; margin-left: auto; margin-right: auto; line-height: 1.75; }
-
-  footer { padding: 44px 48px; border-top: 1px solid var(--rule); display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
-
+  footer { padding: 40px 48px; border-top: 1px solid var(--rule); display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
   .footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--cream); margin-bottom: 8px; display: block; }
-  .footer-logo span { color: var(--red); }
-  .footer-tagline { font-size: 12px; font-weight: 300; color: var(--mist); }
   .footer-disclaimer { font-size: 11px; color: var(--mist); font-weight: 300; line-height: 1.7; max-width: 520px; text-align: right; }
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
-
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
 
   @media (max-width: 900px) {
     nav { padding: 18px 24px; }
     .nav-link { display: none; }
-    .hero { padding: 110px 24px 80px; }
+    .hero { padding: 90px 24px 50px; }
     .container { padding: 0 24px; }
-    .problem-grid { grid-template-columns: 1fr; gap: 48px; }
+    .problem-grid { grid-template-columns: 1fr; gap: 40px; }
     .how-head { grid-template-columns: 1fr; gap: 20px; }
     .steps { grid-template-columns: 1fr 1fr; }
-    .step:nth-child(2) { border-right: none; }
-    .step:nth-child(3) { border-top: 1px solid rgba(0,0,0,0.09); }
-    .testi-grid { grid-template-columns: 1fr; }
-    .clarity-strip { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
-    .clarity-note { grid-column: 1 / -1; }
-    .pricing-grid { grid-template-columns: 1fr; gap: 48px; }
-    .pricing-card { position: static; }
+    .pricing-grid { grid-template-columns: 1fr; gap: 40px; }
     .axis-cols { grid-template-columns: 1fr; }
     .axis-col:first-child { border-right: none; border-bottom: 1px solid var(--rule); }
-    .guarantee-inner { grid-template-columns: 1fr; gap: 20px; }
-    .guarantee-symbol { font-size: 60px; }
+    .guarantee-inner { gap: 24px; }
+    .guarantee-symbol { font-size: 64px; }
     footer { flex-direction: column; }
     .footer-disclaimer { text-align: left; }
   }
@@ -490,7 +444,7 @@
     </a>
     <div class="hero-footnote">
       $297 · One session · One specific answer<br>
-      If your path still feels unclear, we run it again. Free.
+      If your path still feels unclear, your next session is on us.
     </div>
   </div>
   <div class="hero-rule"></div>
@@ -506,7 +460,7 @@
         <p>Most career tools make it worse. They ask what you're good at, then recommend roles that use those skills — sending you right back into work that looks different on paper and feels exactly the same on Monday morning.</p>
         <p>This tool doesn't do that. It treats what you're skilled at and what you want to do every day as two completely separate questions — because they are.</p>
       </div>
-      <div class="problem-right reveal reveal-delay-1">
+      <div class="problem-right reveal">
         <div class="loop-stack">
           <div class="loop-card">
             <span class="year">Year one</span>
@@ -552,7 +506,7 @@
       </div>
       <div class="axis-bottom">
         <span class="axis-bottom-arrow">+</span>
-        <p>The recommendation lives at the intersection. A skilled negotiator who loves mentoring becomes an <strong>HR Business Partner</strong> — not a Contracts Manager. Same credential. Completely different days. Your legal background stays on your résumé. Your daily work changes entirely.</p>
+        <p>The recommendation lives at the intersection. A skilled negotiator who loves mentoring becomes an <strong>HR Business Partner</strong> — not a Contracts Manager. Same credential. Completely different days.</p>
       </div>
     </div>
   </div>
@@ -565,13 +519,13 @@
         <span class="section-label">How it works</span>
         <h2 class="serif">One hour.<br>One specific answer.<br>No homework.</h2>
       </div>
-      <p class="how-intro">You answer questions honestly. The AI does all the analysis — identifies your skills, separates what you want to keep using from what you're done with, and builds a plan around that. You don't generate options. You don't figure anything out. That's the whole point.</p>
+      <p class="how-intro">You answer questions honestly. The AI does all the analysis — identifies your skills, separates what you want to keep using from what you're done with, and builds a plan around that.</p>
     </div>
     <div class="steps reveal">
       <div class="step">
         <span class="step-num serif">01</span>
         <h3>Read the primer</h3>
-        <p>A 90-second read before the session starts. Frames the two key questions so your answers are sharper from the first message.</p>
+        <p>A 90-second read before the session starts. Frames the two key questions so your answers are sharper.</p>
         <span class="step-time">2 min</span>
       </div>
       <div class="step">
@@ -589,7 +543,7 @@
       <div class="step">
         <span class="step-num serif">04</span>
         <h3>Amend if needed</h3>
-        <p>Remember something afterward? One amendment is included. Add it and your report updates. No second session required.</p>
+        <p>Remember something afterward? One amendment is included. Add it and your report updates.</p>
         <span class="step-time">Optional</span>
       </div>
     </div>
@@ -606,7 +560,7 @@
       <div class="testi-card">
         <span class="testi-open-quote">"</span>
         <div class="testi-body">
-          <blockquote>I've had two career coaches and read every book on this. This is the first time anything — or anyone — separated what I'm good at from what I actually want to do. Those are not the same list. I'd never seen that before.</blockquote>
+          <blockquote>I've had two career coaches and read every book on this. This is the first time anything separated what I'm good at from what I actually want to do. Those are not the same list.</blockquote>
         </div>
         <div class="testi-footer">
           <div class="testi-rule"></div>
@@ -628,7 +582,7 @@
       <div class="testi-card">
         <span class="testi-open-quote">"</span>
         <div class="testi-body">
-          <blockquote>The part that got me was when it said which skills to leave behind. Nobody has ever told me I don't have to keep doing the part I hate — that it can stay on my résumé for credibility without defining my days. That reframe alone was worth it.</blockquote>
+          <blockquote>The part that got me was when it said which skills to leave behind. Nobody has ever told me I don't have to keep doing the part I hate — that it can stay on my résumé for credibility.</blockquote>
         </div>
         <div class="testi-footer">
           <div class="testi-rule"></div>
@@ -648,7 +602,7 @@
         <div class="clarity-label">After session</div>
       </div>
       <div class="clarity-note">
-        <p>The average lawyer goes from a <strong>3 to an 8 on career clarity</strong> in one session. This isn't a promise about whether you'll take action. It's a promise about whether you'll <strong>know what to do.</strong> That part we can deliver every time.</p>
+        <p>The average lawyer goes from a <strong>3 to an 8 on career clarity</strong> in one session. This isn't a promise about whether you'll take action. It's a promise about whether you'll <strong>know what to do.</strong></p>
       </div>
     </div>
   </div>
@@ -661,7 +615,6 @@
         <span class="section-label">Investment</span>
         <h2 class="serif">Priced like the decision it is.</h2>
         <p>Whatever you earn, you've been spending real time on this problem for years — circling the same thoughts, arriving at the same impasse. <strong>That loop is expensive at any salary.</strong> $297 ends it.</p>
-        <p>You don't need to be billing $400 an hour for this to be worth it. You need to be tired enough of the loop that you're ready to stop running it. If you're reading this page, you probably are.</p>
         <div class="price-anchors">
           <div class="anchor-row">
             <span class="anchor-label">Career coach (3 months)</span>
@@ -671,33 +624,27 @@
             <span class="anchor-label">Executive recruiter fee</span>
             <span class="anchor-val">15–25% of salary</span>
           </div>
-          <div class="anchor-row">
-            <span class="anchor-label">Two more years in the loop</span>
-            <span class="anchor-val">You know what it costs</span>
-          </div>
           <div class="anchor-row hero-price">
             <span class="anchor-label">Right After — one session, one answer</span>
             <span class="anchor-val">$297</span>
           </div>
         </div>
       </div>
-      <div class="pricing-card reveal reveal-delay-1">
+      <div class="pricing-card reveal">
         <div class="pc-top">
           <div class="price-amount serif"><sup>$</sup>297</div>
           <span class="price-desc">One session · Complete</span>
           <ul class="pc-includes">
             <li><span class="arrow">→</span> Confidential AI strategy session (~50 minutes)</li>
-            <li><span class="arrow">→</span> Personalized exit report with specific job title, salary range, and company type</li>
-            <li><span class="arrow">→</span> Bridge role and dream path — two recommendations, not one</li>
-            <li><span class="arrow">→</span> 60-day action plan with exact steps, outreach scripts, and search terms</li>
-            <li><span class="arrow">→</span> One report amendment included — in case you remember something afterward</li>
+            <li><span class="arrow">→</span> Personalized exit report with title, salary, and company type</li>
+            <li><span class="arrow">→</span> 60-day action plan with steps, scripts, and search terms</li>
+            <li><span class="arrow">→</span> One report amendment included</li>
           </ul>
         </div>
         <div class="pc-bot">
           <a href="https://buy.stripe.com/test_9B67sM5yAble0A44v63oA00" class="btn-buy">Start my session →</a>
           <p class="pc-guarantee">
-            <strong>If you don't feel clear, we'll run it again. Free.</strong><br>
-            No forms, no justification. Just tell us.
+            <strong>If you don't feel clear, we'll run it again. Free.</strong>
           </p>
         </div>
       </div>
@@ -708,11 +655,11 @@
 <section class="guarantee">
   <div class="container">
     <div class="guarantee-inner reveal">
-      <div class="guarantee-symbol serif">&sect;</div>
+      <div class="guarantee-symbol serif">§</div>
       <div class="guarantee-content">
         <h3 class="serif">The Second Session Guarantee</h3>
         <p>If you complete your session and don't feel clearer about your next move than when you started, <strong>we'll run it again — free.</strong> One time. No refund form, no explanation required. Just tell us it didn't land.</p>
-        <p>We offer a second session instead of a refund because we're confident the process works — and because a second conversation almost always surfaces what the first one missed. The people who use this guarantee rarely need a third.</p>
+        <p>We offer a second session instead of a refund because we're confident the process works. The people who use this guarantee rarely need a third.</p>
         <div class="guarantee-terms">
           We don't store your session. We take your word for it. Your conversation stays between you and the AI — always.
         </div>
@@ -732,10 +679,9 @@
 <footer>
   <div class="footer-left">
     <span class="footer-logo">Right<span>.</span>After</span>
-    <span class="footer-tagline">Career strategy for lawyers who are done.</span>
   </div>
   <p class="footer-disclaimer">
-    Right After is an AI career strategy tool — not a licensed counselor, attorney, or placement service. Recommendations are a strong starting point based on patterns in legal career transitions, not a guarantee of employment or outcome. All sessions are confidential within this platform.
+    Right After is an AI career strategy tool — not a licensed counselor, attorney, or placement service. All sessions are confidential within this platform.
   </p>
 </footer>
 
